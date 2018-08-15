@@ -1,0 +1,10 @@
+<div class="dropdown">
+  <button class="btn btn-outline-primary dropdown-toggle" [class.disabled]="isEmpty" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <small class="pr-2" *ngIf="isEmpty">Your cart is empty</small>
+    <small class="pr-2" *ngIf="(products$ | async).length as value">{{ value }}</small>
+    <fa-icon [icon]="faCartPlus"></fa-icon>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#" *ngFor="let product of products$ | async" (click)="removeProduct(product)">{{ product.name }}</a>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" [src]="imageUrl" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p class="card-text">{{ product.description }}</p>
+    <a href="#" class="btn btn-primary" [class.disabled]="!product.isAvailable" (click)="onBuy()">
+      <ng-container *ngIf="product.isAvailable; then available; else notAvailable"></ng-container>
+      <ng-template #available>Buy</ng-template>
+      <ng-template #notAvailable>Already in cart</ng-template>
+    </a>
+  </div>
+</div>
